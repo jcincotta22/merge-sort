@@ -16,7 +16,6 @@ def binary_search(arr, value, low=0, high=arr.length-1)
 end
 
 def include?(arr, value)
-  start = Time.now.to_f
   arr.each do |el|
     if el == value
       return true
