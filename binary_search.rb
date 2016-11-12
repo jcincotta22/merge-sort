@@ -1,7 +1,6 @@
 require 'benchmark'
 
 def binary_search(arr, value, low=0, high=arr.length-1)
-    start = Time.now
     mid = (low + high) / 2
     if low > high
       return false
@@ -16,24 +15,31 @@ def binary_search(arr, value, low=0, high=arr.length-1)
     binary_search(arr, value, low, high)
 end
 
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 19]
 def include?(arr, value)
-  start = Time.now
+  start = Time.now.to_f
   arr.each do |el|
-    if el = value
+    if el == value
       return true
     end
   end
+  return false
 end
-binary_search(a, 15)
-include?(a, 15)
 
-binary = Benchmark.measure {
-  binary_search(a, 15)
-}
-time2 = Benchmark.measure {
-  include?(a, 15)
-}
 
-puts "binary time #{binary.real}"
-puts "include time #{time2.real}"
+
+a = []
+n = 0
+while n < 100_000_000
+  a << n
+  n+=1
+end
+
+binary_search(a, 999_000)
+include?(a, 999_000)
+
+puts binary = Benchmark.measure {
+  binary_search(a, 999_999_000)
+}
+puts time2 = Benchmark.measure {
+  include?(a, 999_999_000)
+}
