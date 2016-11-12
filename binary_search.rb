@@ -36,9 +36,5 @@ end
 binary_search(a, 999_000)
 include?(a, 999_000)
 
-puts binary = Benchmark.measure {
-  binary_search(a, 999_999_000)
-}
-puts time2 = Benchmark.measure {
-  include?(a, 999_999_000)
-}
+puts binary = Benchmark.measure { binary_search(a, 999_999_000) }
+puts time2 = Benchmark.measure { include?(a, 999_999_000) }
